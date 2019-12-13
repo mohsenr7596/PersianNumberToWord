@@ -13,7 +13,7 @@ private val cont = STEPS.size - 1
 
 object NumberToWordConverter {
 
-    fun convert(i: Long): String = when {
+    @JvmStatic fun convert(i: Long): String = when {
         i < 20 -> UNITS[i.toInt()]
         i < 100 -> TENS[(i / 10).toInt()] + if (i % 10 > 0) STR_AND + convert(i % 10) else ""
         i < 1000 -> HUNDREDS[(i / 100).toInt()] + if (i % 100 > 0) STR_AND + convert(i % 100) else ""
@@ -25,7 +25,7 @@ object NumberToWordConverter {
         else -> convert(i / 1000000000000000000) + stepsString(STEPS[5]) + if (i % 1000000000000000000 > 0) STR_AND + convert(i % 1000000000000000000) else ""
     }
 
-    fun convert(input: String) =
+    @JvmStatic fun convert(input: String) =
         convert(BigDecimal(input))
 
     private fun convert(i: BigDecimal): String {

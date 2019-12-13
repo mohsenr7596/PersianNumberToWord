@@ -9,7 +9,13 @@ public class NumberToWordConverterTestJava {
 
     @Test
     public void testUnit() {
-        String convert = NumberToWordConverter.INSTANCE.convert("0");
+        String convert = NumberToWordConverter.convert("0");
         assertEquals(convert, "صفر");
+    }
+
+    @Test
+    public void testHugeNumber() {
+        String convert = NumberToWordConverter.convert("10000000000000000000");
+        assertEquals(convert, "ده تریلیون ");
     }
 }
